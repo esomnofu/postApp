@@ -16,6 +16,8 @@
 		842D7A07248364FD00B84F3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D7A05248364FD00B84F3C /* LaunchScreen.storyboard */; };
 		842D7A12248364FE00B84F3C /* jsonTypicodePostsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A11248364FE00B84F3C /* jsonTypicodePostsTests.swift */; };
 		842D7A1D248364FE00B84F3C /* jsonTypicodePostsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A1C248364FE00B84F3C /* jsonTypicodePostsUITests.swift */; };
+		842D7A3824836FD500B84F3C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A3724836FD500B84F3C /* UIColor.swift */; };
+		842D7A3A2483705A00B84F3C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A392483705A00B84F3C /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		842D7A18248364FE00B84F3C /* jsonTypicodePostsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jsonTypicodePostsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842D7A1C248364FE00B84F3C /* jsonTypicodePostsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonTypicodePostsUITests.swift; sourceTree = "<group>"; };
 		842D7A1E248364FE00B84F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842D7A3724836FD500B84F3C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		842D7A392483705A00B84F3C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +105,12 @@
 		842D79F6248364C600B84F3C /* jsonTypicodePosts */ = {
 			isa = PBXGroup;
 			children = (
+				842D7A3624836FC500B84F3C /* Extensions */,
 				842D7A2D2483675200B84F3C /* UI */,
 				842D7A2C2483674100B84F3C /* Model */,
-				842D7A2B2483673700B84F3C /* Extensions */,
 				842D7A2A2483672A00B84F3C /* Utils */,
 				842D79F7248364C600B84F3C /* AppDelegate.swift */,
 				842D79F9248364C600B84F3C /* SceneDelegate.swift */,
-				842D79FB248364C600B84F3C /* SplashScreenViewController.swift */,
 				842D79FD248364C600B84F3C /* Main.storyboard */,
 				842D7A03248364FD00B84F3C /* Assets.xcassets */,
 				842D7A05248364FD00B84F3C /* LaunchScreen.storyboard */,
@@ -142,14 +145,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		842D7A2B2483673700B84F3C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Extensions;
-			path = "New Group1";
-			sourceTree = "<group>";
-		};
 		842D7A2C2483674100B84F3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,8 +155,18 @@
 		842D7A2D2483675200B84F3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				842D79FB248364C600B84F3C /* SplashScreenViewController.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		842D7A3624836FC500B84F3C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				842D7A3724836FD500B84F3C /* UIColor.swift */,
+				842D7A392483705A00B84F3C /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +304,8 @@
 				842D79F8248364C600B84F3C /* AppDelegate.swift in Sources */,
 				842D7A02248364C700B84F3C /* jsonTypicodePosts.xcdatamodeld in Sources */,
 				842D79FA248364C600B84F3C /* SceneDelegate.swift in Sources */,
+				842D7A3A2483705A00B84F3C /* UIView.swift in Sources */,
+				842D7A3824836FD500B84F3C /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
