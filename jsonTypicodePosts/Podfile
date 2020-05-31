@@ -9,6 +9,7 @@ target 'jsonTypicodePosts' do
   pod 'Alamofire', '~> 5.1'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   pod 'ReachabilitySwift'
   pod 'Toast-Swift', '~> 5.0.1'
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SplashScreenViewController: UIViewController {
 
@@ -38,8 +39,26 @@ class SplashScreenViewController: UIViewController {
     
     private func decideAppFlow() {
         DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            print("Moving to Vc based on user Auth status...")
+            if Auth.auth().currentUser == nil {
+                self.presentLogin()
+            }else{
+                self.goHome()
+            }
         }
+    }
+    
+    private func goHome(){
+        //Return Home Screen
+        let dashBoardController = ContainerViewController()
+        dashBoardController.presentViewController(caller: self)
+    }
+    
+    private func presentLogin(){
+       //If not Logged in push to Login Screen
+       if let navController = self.navigationController {
+        let loginController = LoginController()
+        loginController.pushNavController(caller: navController)
+       }
     }
 
 }
