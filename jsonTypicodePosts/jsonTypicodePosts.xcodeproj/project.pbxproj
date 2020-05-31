@@ -38,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		842D79F4248364C600B84F3C /* jsonTypicodePosts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jsonTypicodePosts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842D79F4248364C600B84F3C /* PostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842D79F7248364C600B84F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842D79F9248364C600B84F3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		842D79FB248364C600B84F3C /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		842D79F5248364C600B84F3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				842D79F4248364C600B84F3C /* jsonTypicodePosts.app */,
+				842D79F4248364C600B84F3C /* PostApp.app */,
 				842D7A0D248364FE00B84F3C /* jsonTypicodePostsTests.xctest */,
 				842D7A18248364FE00B84F3C /* jsonTypicodePostsUITests.xctest */,
 			);
@@ -186,7 +186,7 @@
 			);
 			name = jsonTypicodePosts;
 			productName = jsonTypicodePosts;
-			productReference = 842D79F4248364C600B84F3C /* jsonTypicodePosts.app */;
+			productReference = 842D79F4248364C600B84F3C /* PostApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		842D7A0C248364FE00B84F3C /* jsonTypicodePostsTests */ = {
@@ -485,8 +485,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.optisoft.jsonTypicodePosts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esomnofu.postApp;
+				PRODUCT_NAME = PostApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -503,8 +503,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.optisoft.jsonTypicodePosts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.esomnofu.postApp;
+				PRODUCT_NAME = PostApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
