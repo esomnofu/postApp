@@ -10,6 +10,6 @@ import UIKit
 
 extension UIColor {
     static func appBgColor() -> UIColor {
-        return UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
+        return UIColor(red: 248/255, green: 122/255, blue: 122/255, alpha: 1)
     }
 }
