@@ -46,8 +46,6 @@ class ApiService: NSObject {
         let object = NSManagedObject(entity: entity, insertInto: managedContext)
         
         for (key, value) in entityData {
-            print("key: ", key)
-            print("value: ", value)
             object.setValue(value, forKey: key)
         }
         

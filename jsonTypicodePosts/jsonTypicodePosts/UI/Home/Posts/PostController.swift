@@ -34,7 +34,9 @@ class PostController : UICollectionViewController, UICollectionViewDelegateFlowL
         }) { (err) in
             self.END_PAGE_LOADING()
             self.view.makeToast("Poor Network Connection, Will Fetch Posts from local storage if available.", duration: 3.0, position: .bottom)
-            self.getLocalPosts()
+            DispatchQueue.main.asyncAfter(deadline: .now()+4) {
+                self.getLocalPosts()
+            }
         }
     }
     
@@ -52,10 +54,8 @@ class PostController : UICollectionViewController, UICollectionViewDelegateFlowL
             }
             self.collectionView.reloadData()
             if allPosts.count == 0 {
-                DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-                    self.view.hideToast()
-                    self.view.makeToast("Oops!, no local posts stored on this device.", duration: 6.0, position: .center)
-                }
+                self.view.hideToast()
+                self.view.makeToast("Oops!, no local posts stored on this device.", duration: 6.0, position: .center)
             }
         }
         catch{
