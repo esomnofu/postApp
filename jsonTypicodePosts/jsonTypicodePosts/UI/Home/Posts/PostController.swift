@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+import Toast_Swift
 
 private let postCellIdentifier = "any_value"
 
@@ -30,7 +32,34 @@ class PostController : UICollectionViewController, UICollectionViewDelegateFlowL
             self.allPosts = allPosts
             self.collectionView.reloadData()
         }) { (err) in
-            self.displayNetworkRequestError()
+            self.END_PAGE_LOADING()
+            self.view.makeToast("Poor Network Connection, Will Fetch Posts from local storage if available.", duration: 3.0, position: .bottom)
+            self.getLocalPosts()
+        }
+    }
+    
+    func getLocalPosts(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: postDataEntity_key)
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                guard let title = data.value(forKey: "title") as? String else {return}
+                guard let body = data.value(forKey: "body") as? String else {return}
+                let post = Post(title: title, body: body)
+                allPosts.insert(post, at: 0) // new elements top
+            }
+            self.collectionView.reloadData()
+            if allPosts.count == 0 {
+                DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+                    self.view.hideToast()
+                    self.view.makeToast("Oops!, no local posts stored on this device.", duration: 6.0, position: .center)
+                }
+            }
+        }
+        catch{
+            print("Cant get local data...")
         }
     }
     

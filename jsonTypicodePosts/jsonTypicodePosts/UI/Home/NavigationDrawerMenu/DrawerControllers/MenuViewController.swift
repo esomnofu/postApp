@@ -8,11 +8,16 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+import CoreData
+
+
 private let menuOptionCellIdentifier = "menuOptionCellIdentifier"
 
 class MenuViewController : UIViewController {
     
     //MARK: Properties
+    let emailAddress = Auth.auth().currentUser?.email ?? ""
     let menuTextsArray = ["Home", "Posts","Logout"]
     let menuIconsArray : [UIImage] = [#imageLiteral(resourceName: "home"),#imageLiteral(resourceName: "posts"),#imageLiteral(resourceName: "logout")]
     let menuRightArrowBooleanArray = [true,true,true,true,true,true,false,false,false]
@@ -32,7 +37,7 @@ class MenuViewController : UIViewController {
     
     let profileImageView = produceImageView(image: #imageLiteral(resourceName: "esomnofu"))
     let usernameLabel = UILabel()
-    let viewProfileButton = produceButton(label: "\(Auth.auth().currentUser?.email ?? "")", bgColor: UIColor.white, textColor: UIColor.appBgColor(), size: 14)
+    lazy var viewProfileButton = produceButton(label: "\(emailAddress)", bgColor: UIColor.white, textColor: UIColor.appBgColor(), size: 14)
     
     let menuWidthDisplayView : UIView = {
        let uv = UIView()
@@ -47,17 +52,7 @@ class MenuViewController : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.appBgColor()
         setupUI()
-        
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let ref = Database.database().reference().child(FIREBASE_USER_NODE).child(uid)
-         
-         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-             guard let userInfo = snapshot.value as? [String:String] else { return }
-            guard let fullName = userInfo["fullName"] else {return}
-            self.usernameLabel.attributedText = NSAttributedString.singleOpenSansBold(string: fullName, size: 16, color: UIColor.white)
-         })
-        
-        
+        getUserFirebaseInfo()
     }
     
     
@@ -82,6 +77,63 @@ class MenuViewController : UIViewController {
 
         menuWidthDisplayView.addSubview(tableView)
         tableView.anchor(top: viewProfileButton.bottomAnchor, left: menuWidthDisplayView.leftAnchor, bottom: menuWidthDisplayView.bottomAnchor, right: menuWidthDisplayView.rightAnchor, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, height: 0, width: 0)
+    }
+    
+    func getUserFirebaseInfo(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let ref = Database.database().reference().child(FIREBASE_USER_NODE).child(uid)
+        var fullName = "New User"
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+              guard let userInfo = snapshot.value as? [String:String] else { return }
+              fullName = userInfo["fullName"] ?? fullName
+              self.usernameLabel.attributedText = NSAttributedString.singleOpenSansBold(string: fullName, size: 16, color: UIColor.white)
+            self.updateLocalStorage(fullName: fullName) // in case name was updated
+        })
+        self.doLocalStorageChecks(fullName:fullName)
+    }
+    
+    func doLocalStorageChecks(fullName:String){
+        let userCount = ApiService.sharedInstance.getLocalEntityCount(entityName: userDataEntity_key)
+        if userCount == 0 {
+            ApiService.sharedInstance.storeItem(entityName: userDataEntity_key, entityData: ["fullName":fullName, "email":emailAddress])
+            return
+        }
+        getUserInfo()
+    }
+    
+    func updateLocalStorage(fullName:String){
+          guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+          let managedContext = appDelegate.persistentContainer.viewContext
+          let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: userDataEntity_key)
+          fetchRequest.predicate = NSPredicate(format: "email = %@", emailAddress)
+        do{
+             let result = try managedContext.fetch(fetchRequest)
+             for data in result as! [NSManagedObject] {
+                 data.setValue(fullName, forKey: "fullName")
+                try managedContext.save()
+             }
+         }
+         catch{
+             print("Cant get local data...")
+         }
+    }
+    
+    func getUserInfo(){
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: userDataEntity_key)
+            do{
+                let result = try managedContext.fetch(fetchRequest)
+                for data in result as! [NSManagedObject] {
+                    let fullName = data.value(forKey: "fullName") as? String ?? "New User"
+                    DispatchQueue.main.async {
+                        self.usernameLabel.attributedText = NSAttributedString.singleOpenSansBold(string: fullName, size: 16, color: UIColor.white)
+                    }
+                }
+            }
+            catch{
+                print("Cant get local data...")
+            }
     }
     
 }

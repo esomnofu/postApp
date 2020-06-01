@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import FirebaseDatabase
 
 class RegisterController: LoginController {
     
@@ -67,8 +67,7 @@ class RegisterController: LoginController {
     
     
     @objc override func handleAuthenticateUser() {
-        //Register
-        
+    
         guard let email = emailTextField.text, email.isEmail else {
             presentAlert(title: "Please provide a valid email")
             return
@@ -84,25 +83,20 @@ class RegisterController: LoginController {
             return
         }
         
-        
         START_PAGE_LOADING()
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            
                     if let err = error {
                         self.displayNetworkRequestError(msg: err.localizedDescription)
                         return
                     }
-        
                     let uid = Auth.auth().currentUser?.uid
                     let dictionaryValues = ["fullName" : fullname]
                     let values = [uid: dictionaryValues]
                     Database.database().reference().child(FIREBASE_USER_NODE).updateChildValues(values, withCompletionBlock: { (error, ref) in
-                        
                         if let err = error {
                             self.displayNetworkRequestError(msg: err.localizedDescription)
                             return
                         }
-                        
                         self.END_PAGE_LOADING()
                         self.goHome()
                 })

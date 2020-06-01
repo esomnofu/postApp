@@ -29,3 +29,7 @@ let FIREBASE_USER_NODE = "users"
 
 //MARK: Errors
 let SOMETHING_WENT_WRONG = "something went wrong, check your internet connection"
+
+//MARK: CoreData
+let postDataEntity_key = "PostData"
+let userDataEntity_key = "User"

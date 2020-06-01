@@ -44,6 +44,7 @@
 		842D7A722483D05700B84F3C /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A712483D05700B84F3C /* PostCell.swift */; };
 		842D7A752483D46C00B84F3C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A742483D46C00B84F3C /* ApiService.swift */; };
 		842D7A772483E0F500B84F3C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D7A762483E0F500B84F3C /* UILabel.swift */; };
+		847A814324843E01003250E5 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A814224843E01003250E5 /* ConnectionManager.swift */; };
 		DD8F9D74C170AFDC0478FA60 /* Pods_jsonTypicodePosts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C248D96B819E6DDE64F4090 /* Pods_jsonTypicodePosts.framework */; };
 		E346A512125A75ACC856971C /* Pods_jsonTypicodePostsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41CA1028E28021D6C33A307 /* Pods_jsonTypicodePostsTests.framework */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,7 @@
 		842D7A712483D05700B84F3C /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		842D7A742483D46C00B84F3C /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		842D7A762483E0F500B84F3C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		847A814224843E01003250E5 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		8A7D66E27D6F20E6ECE70579 /* Pods-jsonTypicodePosts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsonTypicodePosts.release.xcconfig"; path = "Target Support Files/Pods-jsonTypicodePosts/Pods-jsonTypicodePosts.release.xcconfig"; sourceTree = "<group>"; };
 		9C248D96B819E6DDE64F4090 /* Pods_jsonTypicodePosts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jsonTypicodePosts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0A69985A7AE3C801EDE3DE4 /* Pods-jsonTypicodePosts-jsonTypicodePostsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsonTypicodePosts-jsonTypicodePostsUITests.release.xcconfig"; path = "Target Support Files/Pods-jsonTypicodePosts-jsonTypicodePostsUITests/Pods-jsonTypicodePosts-jsonTypicodePostsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				842D7A742483D46C00B84F3C /* ApiService.swift */,
+				847A814224843E01003250E5 /* ConnectionManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				842D7A652483BAF000B84F3C /* HomeViewController.swift in Sources */,
 				842D79FA248364C600B84F3C /* SceneDelegate.swift in Sources */,
 				842D7A41248383B100B84F3C /* RegisterController.swift in Sources */,
+				847A814324843E01003250E5 /* ConnectionManager.swift in Sources */,
 				842D7A592483AC0000B84F3C /* UIActivityIndicator.swift in Sources */,
 				842D7A4924838CD400B84F3C /* AppConstants.swift in Sources */,
 				842D7A3A2483705A00B84F3C /* UIView.swift in Sources */,
